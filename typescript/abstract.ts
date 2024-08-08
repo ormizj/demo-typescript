@@ -38,7 +38,22 @@ class MyAbstractClass extends MyAbstract {
 		this.name = name;
 	}
 
-	getName(): string {
+	override getName(): string {
+		return this.name;
+	}
+}
+
+class MyErrorClass extends MyAbstract {
+	// must have same type as superclass
+	name: number;
+
+	constructor(name: string, age: number) {
+		super(age);
+		this.name = name;
+	}
+
+	// must have same signature as superclass
+	override getName(): number {
 		return this.name;
 	}
 }
