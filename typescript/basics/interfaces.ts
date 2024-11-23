@@ -6,6 +6,5 @@ interface FunctionInterface<T> {
 	func2: () => T;
 
 	// method 1 doesn't work with dynamic keys
-	[K: string]: ()=> T;
-
+	[K: string]: () => T;
 }

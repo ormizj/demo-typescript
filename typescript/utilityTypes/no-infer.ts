@@ -1,19 +1,16 @@
-function createColorNoInfer<C extends string>(
-    colors: C[],
-    defaultColor?: NoInfer<C>
-) { 
-    // ... 
+function createColor<C extends string>(colors: C[], defaultColor?: C) {
+	// ...
 }
-createColorNoInfer(["red", "yellow", "green"], "red");  // OK
-createColorNoInfer(["red", "yellow", "green"], "blue");  // Error
-// C = "red" | "yellow" | "green"
+createColor(['red', 'yellow', 'green'], 'red'); // OK
+createColor(['red', 'yellow', 'green'], 'BLUE'); // OK
+// C = "red" | "yellow" | "green" | "BLUE"
 
-function createColor<C extends string>(
-    colors: C[],
-    defaultColor?: C,
+function createColorNoInfer<C extends string>(
+	colors: C[],
+	defaultColor?: NoInfer<C>
 ) {
-    // ...
+	// ...
 }
-createColor(["red", "yellow", "green"], "red");  // OK
-createColor(["red", "yellow", "green"], "blue");  // OK
-// C = "red" | "yellow" | "green" | "blue"
+createColorNoInfer(['red', 'yellow', 'green'], 'red'); // OK
+createColorNoInfer(['red', 'yellow', 'green'], 'BLUE'); // Error
+// C = "red" | "yellow" | "green"
